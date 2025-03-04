@@ -1,6 +1,8 @@
 # MicroIntegrator-4.2.0-AzureServiceBus-Example
 Example configurations to publish to an Azure Service Bus (ASB) Queue or Topic and then consume it using an InboundEndpoint
 
+Side Note: These examples where created utilizing the new [VSCode MI plugin](https://marketplace.visualstudio.com/items?itemName=WSO2.micro-integrator).
+
 ## Micro Integrator Nuance
 It seems that between EI and MI there have been some changes that need to be updated in the current ASB examples in the WSO2 documentation.
 
