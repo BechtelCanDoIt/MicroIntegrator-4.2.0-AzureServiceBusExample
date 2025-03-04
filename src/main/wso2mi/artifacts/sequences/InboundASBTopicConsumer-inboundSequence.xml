@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="InboundASBTopicConsumer-inboundSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log category="INFO" level="full" separator="&#xa;">
+        <property name="DEBUG" value="---- Extracted message from ASB Topic" />
+    </log>
+    <drop/>
+</sequence>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inboundEndpoint name="InboundASBConsumer" sequence="InboundASBConsumer-inboundSequence" onError="InboundASBConsumer-inboundErrorSequence" suspend="false" protocol="jms">
+    <parameters xmlns="http://ws.apache.org/ns/synapse">
+        <parameter name="interval">1000</parameter>
+        <parameter name="java.naming.factory.initial">org.apache.qpid.jms.jndi.JmsInitialContextFactory</parameter>
+        <parameter name="java.naming.provider.url">conf/jndi.properties</parameter>
+        <parameter name="transport.jms.ConnectionFactoryType">queue</parameter>
+        <parameter name="transport.jms.ConnectionFactoryJNDIName">QueueConnectionFactory</parameter>
+        <parameter name="sequential">true</parameter>
+        <parameter name="coordination">true</parameter>
+        <parameter name="transport.jms.Destination">queue.test</parameter>
+        <parameter name="transport.jms.CacheLevel">0</parameter>
+        <parameter name="transport.jms.ContentType">application/xml</parameter>
+        <parameter name="transport.jms.JMSSpecVersion">1.1</parameter>
+        <parameter name="transport.jms.ConcurrentConsumers">1</parameter>
+        <parameter name="transport.jms.PollingSuspensionPeriod">60000</parameter>
+        <parameter name="transport.jms.ReceiveTimeout">1</parameter>
+        <parameter name="transport.jms.MessagePropertyHyphens">replace</parameter>
+    </parameters>
+</inboundEndpoint>

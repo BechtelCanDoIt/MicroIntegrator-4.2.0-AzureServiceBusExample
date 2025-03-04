@@ -1,0 +1,41 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="AzureServiceBusQueuePublisher"
+    context="/publishToQueue">
+    <resource methods="POST" uri-template="/send">
+        <inSequence>
+            <property action="remove" name="TRANSPORT_HEADERS" scope="axis2" />
+            <property name="REST_URL_POSTFIX" scope="axis2" action="remove"/>
+            <property name="OUT_ONLY" value="true" />
+            <property name="FORCE_SC_ACCEPTED" value="true" scope="axis2" />
+            <log level="full" separator="&#xa;">
+                <property name="DEBUG" value="++++ API sending to QUEUE"></property>
+            </log>
+            <call blocking="true">
+                <endpoint>
+                    <address uri="jms://queue.test?transport.jms.ConnectionFactory=azureQueueProducerConnectionFactory&amp;transport.jms.DestinationType=queue"/>
+                </endpoint>
+            </call>
+            <log level="custom" separator="&#xa;">
+                <property name="DEBUG" value="++++ API sent msg to QUEUE"></property>
+            </log>
+        </inSequence>
+    </resource>
+    <resource methods="POST" uri-template="/sendTopic">
+        <inSequence>
+            <property action="remove" name="TRANSPORT_HEADERS" scope="axis2" />
+            <property name="REST_URL_POSTFIX" scope="axis2" action="remove"/>
+            <property name="OUT_ONLY" value="true" />
+            <property name="FORCE_SC_ACCEPTED" value="true" scope="axis2" />
+            <log level="full" separator="&#xa;">
+                <property name="DEBUG" value="++++ API sending to TOPIC"></property>
+            </log>
+            <call blocking="true">
+                <endpoint>
+                    <address uri="jms://topic.test?transport.jms.ConnectionFactory=azureTopicProducerConnectionFactory&amp;transport.jms.DestinationType=topic"/>
+                </endpoint>
+            </call>
+            <log level="custom" separator="&#xa;">
+                <property name="DEBUG" value="++++ API sent msg to TOPIC"></property>
+            </log>
+        </inSequence>
+    </resource>
+</api>
